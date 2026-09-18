@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SRK Constructions | Building Chennai Since 2005</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; line-height: 1.6; }
+
+  nav {
+    position: sticky; top: 0; background: #fff; padding: 18px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); z-index: 100;
+  }
+  .logo { font-size: 22px; font-weight: 800; color: #1a3a5c; letter-spacing: -0.5px; }
+  .logo span { color: #e67e22; }
+  nav ul { display: flex; gap: 30px; list-style: none; }
+  nav a { text-decoration: none; color: #444; font-weight: 500; font-size: 15px; }
+  nav a:hover { color: #e67e22; }
+  .nav-cta { background: #e67e22; color: #fff !important; padding: 10px 22px; border-radius: 6px; font-weight: 600; }
+  .nav-cta:hover { background: #cf6d15; }
+
+  .hero {
+    background: linear-gradient(rgba(26,58,92,0.75), rgba(26,58,92,0.75)),
+      url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600') center/cover;
+    color: #fff; padding: 120px 40px; text-align: center;
+  }
+  .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+  .hero p { font-size: 19px; max-width: 650px; margin: 0 auto 35px; opacity: 0.95; }
+  .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: #e67e22; color: #fff; padding: 16px 36px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; transition: transform 0.2s, background 0.2s; border: none; cursor: pointer; font-family: inherit; display: inline-block; }
+  .btn-primary:hover { background: #cf6d15; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: #fff; padding: 16px 36px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; border: 2px solid #fff; transition: background 0.2s; }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+  .trust { background: #f8f9fa; padding: 30px 40px; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; border-bottom: 1px solid #eee; }
+  .trust-item { text-align: center; }
+  .trust-item strong { display: block; font-size: 28px; color: #1a3a5c; font-weight: 800; }
+  .trust-item span { font-size: 14px; color: #666; }
+
+  .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-title { text-align: center; margin-bottom: 55px; }
+  .section-title h2 { font-size: 36px; color: #1a3a5c; margin-bottom: 12px; }
+  .section-title p { color: #666; font-size: 17px; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+  .service-card { background: #fff; border: 1px solid #eaeaea; border-radius: 12px; padding: 35px 28px; transition: box-shadow 0.25s, transform 0.25s; }
+  .service-card:hover { box-shadow: 0 12px 30px rgba(0,0,0,0.1); transform: translateY(-4px); }
+  .service-icon { font-size: 34px; margin-bottom: 18px; }
+  .service-card h3 { color: #1a3a5c; font-size: 20px; margin-bottom: 12px; }
+  .service-card p { color: #666; font-size: 15px; }
+
+  .gallery-section { background: #f8f9fa; padding: 80px 40px; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; max-width: 1200px; margin: 0 auto; }
+  .gallery-item { position: relative; overflow: hidden; border-radius: 12px; height: 260px; cursor: pointer; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,58,92,0.9), transparent 60%); color: #fff; display: flex; flex-direction: column; justify-content: flex-end; padding: 22px; opacity: 0; transition: opacity 0.3s; }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay h4 { font-size: 18px; margin-bottom: 5px; }
+  .gallery-overlay span { font-size: 13px; color: #e67e22; font-weight: 600; }
+
+  .testimonials-section { background: #1a3a5c; color: #fff; padding: 80px 40px; }
+  .testimonials-section .section-title h2 { color: #fff; }
+  .testimonials-section .section-title p { color: #b8c9dc; }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+  .testimonial-card { background: #fff; color: #333; border-radius: 12px; padding: 32px 28px; position: relative; }
+  .testimonial-card::before { content: '"'; position: absolute; top: 5px; left: 22px; font-size: 80px; color: #e67e22; opacity: 0.25; font-family: Georgia, serif; }
+  .stars { color: #f5a623; font-size: 18px; margin-bottom: 14px; }
+  .testimonial-card p { font-size: 15px; color: #555; margin-bottom: 20px; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar { width: 45px; height: 45px; border-radius: 50%; background: #e67e22; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; }
+  .author-info strong { display: block; color: #1a3a5c; font-size: 15px; }
+  .author-info span { font-size: 13px; color: #888; }
+
+  .review-cta { text-align: center; margin-top: 45px; }
+  .review-cta p { color: #b8c9dc; margin-bottom: 15px; font-size: 15px; }
+
+  .contact-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
+  .contact-info h3 { color: #1a3a5c; font-size: 26px; margin-bottom: 20px; }
+  .contact-info p { color: #666; margin-bottom: 28px; }
+  .contact-detail { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+  .contact-detail .icon { width: 42px; height: 42px; background: #fdf1e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .contact-detail strong { display: block; color: #1a3a5c; font-size: 15px; }
+  .contact-detail span { color: #666; font-size: 14px; }
+
+  form { background: #f8f9fa; padding: 35px; border-radius: 14px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 600; color: #1a3a5c; margin-bottom: 7px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; font-family: inherit; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: #e67e22; }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: #e67e22; color: #fff; border: none; padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; font-family: inherit; }
+  .form-submit:hover { background: #cf6d15; }
+  .form-note { text-align: center; font-size: 13px; color: #888; margin-top: 12px; }
+
+  .why { background: #1a3a5c; color: #fff; }
+  .why .section-title h2 { color: #fff; }
+  .why .section-title p { color: #b8c9dc; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; }
+  .why-item h3 { color: #e67e22; font-size: 18px; margin-bottom: 10px; }
+  .why-item p { color: #d4e0ed; font-size: 15px; }
+
+  .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; counter-reset: step; }
+  .process-step { text-align: center; padding: 25px; }
+  .process-step::before { counter-increment: step; content: counter(step); display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; border-radius: 50%; background: #e67e22; color: #fff; font-size: 22px; font-weight: 800; margin: 0 auto 18px; }
+  .process-step h3 { color: #1a3a5c; font-size: 18px; margin-bottom: 8px; }
+  .process-step p { color: #666; font-size: 14px; }
+
+  .cta { background: linear-gradient(135deg, #e67e22, #cf6d15); color: #fff; text-align: center; padding: 70px 40px; }
+  .cta h2 { font-size: 34px; margin-bottom: 15px; }
+  .cta p { font-size: 18px; margin-bottom: 30px; opacity: 0.95; }
+  .cta .btn-white { background: #fff; color: #e67e22; padding: 16px 40px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px; display: inline-block; }
+
+  footer { background: #0f2338; color: #a8bdd4; padding: 55px 40px 25px; }
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 35px; max-width: 1200px; margin: 0 auto 35px; }
+  .footer-col h4 { color: #fff; margin-bottom: 16px; font-size: 16px; }
+  .footer-col p, .footer-col a { color: #a8bdd4; font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; }
+  .footer-col a:hover { color: #e67e22; }
+  .footer-bottom { text-align: center; padding-top: 25px; border-top: 1px solid #1e3550; font-size: 13px; color: #7a91ab; }
+  .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background: #25D366; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.25); z-index: 200; }
+
+  @media (max-width: 768px) {
+    nav { padding: 15px 20px; }
+    nav ul { display: none; }
+    .hero { padding: 80px 20px; }
+    .hero h1 { font-size: 32px; }
+    .section, .gallery-section, .testimonials-section, .contact-section { padding: 55px 20px; }
+    .section-title h2 { font-size: 28px; }
+    .contact-wrap { grid-template-columns: 1fr; gap: 35px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">SRK <span>Constructions</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Projects</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get Free Quote</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Building Chennai's Future,<br>One Home at a Time</h1>
+  <p>Trusted civil contractors since 2005. Residential, commercial, and renovation projects delivered on time — with transparent pricing and no hidden costs.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Get Free Site Visit →</a>
+    <a href="tel:+917806866472" class="btn-outline">📞 Call Now</a>
+  </div>
+</section>
+
+<div class="trust">
+  <div class="trust-item"><strong>500+</strong><span>Projects Completed</span></div>
+  <div class="trust-item"><strong>20+</strong><span>Years Experience</span></div>
+  <div class="trust-item"><strong>100%</strong><span>On-Time Delivery</span></div>
+  <div class="trust-item"><strong>4.8★</strong><span>Google Rating</span></div>
+</div>
+
+<section class="section" id="services">
+  <div class="section-title">
+    <h2>What We Build</h2>
+    <p>From foundation to finishing — complete construction solutions</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Residential Construction</h3>
+      <p>Independent houses, villas, and apartment buildings built to last with quality materials and skilled labour.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Commercial Projects</h3>
+      <p>Office spaces, showrooms, and commercial complexes designed for functionality and long-term durability.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔨</div>
+      <h3>Renovation & Remodeling</h3>
+      <p>Transform your existing space — kitchen upgrades, extensions, waterproofing, and complete makeovers.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📐</div>
+      <h3>Planning & Approval</h3>
+      <p>CMDA/Corporation plan approvals, structural drawings, and end-to-end documentation support.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+  <div class="section-title">
+    <h2>Our Recent Projects</h2>
+    <p>Real work, real results — across Chennai</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800" alt="Villa Project">
+      <div class="gallery-overlay">
+        <h4>3BHK Villa</h4>
+        <span>Anna Nagar • 2025</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800" alt="Apartment Interior">
+      <div class="gallery-overlay">
+        <h4>Apartment Complex</h4>
+        <span>Velachery • 2024</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800" alt="Kitchen Remodel">
+      <div class="gallery-overlay">
+        <h4>Kitchen Remodel</h4>
+        <span>T Nagar • 2025</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800" alt="Commercial Building">
+      <div class="gallery-overlay">
+        <h4>Office Building</h4>
+        <span>OMR • 2024</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800" alt="Duplex House">
+      <div class="gallery-overlay">
+        <h4>Duplex House</h4>
+        <span>Porur • 2025</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800" alt="Bathroom Renovation">
+      <div class="gallery-overlay">
+        <h4>Bathroom Renovation</h4>
+        <span>Adyar • 2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================= -->
+<!-- REVIEWS SECTION — ADD/EDIT REVIEWS HERE      -->
+<!-- ============================================= -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-title">
+    <h2>What Our Clients Say</h2>
+    <p>Real reviews from real homeowners</p>
+  </div>
+
+  <div class="testimonial-grid">
+
+    <!-- ⭐ REVIEW 1 — EDIT THIS -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>We built our dream home with SRK in 2024. They finished 2 weeks early and the quality was excellent. The weekly photo updates kept us stress-free even though we were abroad.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">RK</div>
+        <div class="author-info">
+          <strong>Rajesh Kumar</strong>
+          <span>Anna Nagar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⭐ REVIEW 2 — EDIT THIS -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <p>Transparent pricing, no hidden costs. What they quoted was what we paid. The supervisor was responsive and the finishing work was top-notch. Highly recommend.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">PS</div>
+        <div class="author-info">
+          <strong>Priya Sundaram</strong>
+          <span>Velachery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⭐ REVIEW 3 — EDIT THIS -->
+    <div class="testimonial-card">
+      <div class="stars">★★★★☆</div>
+      <p>Did a full kitchen and bathroom renovation. Work quality was great, minor delay of 4 days due to material shortage, but they communicated honestly. Good value for money.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AM</div>
+        <div class="author-info">
+          <strong>Arun Menon</strong>
+          <span>T Nagar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⭐ TO ADD A NEW REVIEW: copy one block above and paste here -->
+
+  </div>
+
+  <div class="review-cta">
+    <p>Worked with us? We'd love your feedback.</p>
+    <a href="https://wa.me/917806866472?text=Hi%2C%20I'd%20like%20to%20leave%20a%20review%20for%20SRK%20Constructions.%20My%20review%3A%20" class="btn-primary" target="_blank">
+      ✍️ Write a Review on WhatsApp
+    </a>
+  </div>
+</section>
+
+<section class="section why" id="why">
+  <div class="section-title">
+    <h2>Why Families Choose Us</h2>
+    <p>We don't just build structures — we build trust</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <h3>Transparent Pricing</h3>
+      <p>Detailed item-wise quotes. No hidden charges, no surprise costs at handover.</p>
+    </div>
+    <div class="why-item">
+      <h3>Quality Materials</h3>
+      <p>ISI-certified cement, TMT steel, and branded fittings. Every material verified before use.</p>
+    </div>
+    <div class="why-item">
+      <h3>On-Time Delivery</h3>
+      <p>Written timelines with penalty clauses. We've never missed a handover date.</p>
+    </div>
+    <div class="why-item">
+      <h3>1-Year Warranty</h3>
+      <p>Free post-construction support for any structural or finishing issues.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="section-title">
+    <h2>How We Work</h2>
+    <p>Simple, transparent, and stress-free</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <h3>Free Site Visit</h3>
+      <p>We visit your plot, take measurements, and understand your requirements.</p>
+    </div>
+    <div class="process-step">
+      <h3>Detailed Quote</h3>
+      <p>Item-wise estimate with material specifications delivered within 48 hours.</p>
+    </div>
+    <div class="process-step">
+      <h3>Construction</h3>
+      <p>Dedicated supervisor, weekly progress photos, and quality checks at every stage.</p>
+    </div>
+    <div class="process-step">
+      <h3>Handover</h3>
+      <p>Final inspection, documentation, and 1-year warranty card.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section-title">
+    <h2>Get Your Free Quote</h2>
+    <p>Fill the form — we'll call you within 2 hours</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <h3>Let's Talk About Your Project</h3>
+      <p>Whether it's a new home, renovation, or commercial build — we'll give you an honest estimate with no obligation.</p>
+
+      <div class="contact-detail">
+        <div class="icon">📞</div>
+        <div>
+          <strong>Phone</strong>
+          <span>+91 78068 66472</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">✉️</div>
+        <div>
+          <strong>Email</strong>
+          <span>info@srkconstructions.in</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">📍</div>
+        <div>
+          <strong>Office</strong>
+          <span>Anna Nagar, Chennai - 600040</span>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon">🕐</div>
+        <div>
+          <strong>Working Hours</strong>
+          <span>Mon-Sat: 9AM - 7PM</span>
+        </div>
+      </div>
+    </div>
+
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" required placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" required placeholder="+91 XXXXX XXXXX">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com">
+        </div>
+        <div class="form-group">
+          <label>Project Type *</label>
+          <select required>
+            <option value="">Select...</option>
+            <option>New Home Construction</option>
+            <option>Commercial Building</option>
+            <option>Renovation / Remodeling</option>
+            <option>Plan Approval Only</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Location / Area</label>
+        <input type="text" placeholder="e.g. Anna Nagar, Porur">
+      </div>
+      <div class="form-group">
+        <label>Tell us about your project</label>
+        <textarea placeholder="Plot size, budget, timeline, or anything else..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Enquiry →</button>
+      <p class="form-note">We respect your privacy. No spam, ever.</p>
+    </form>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Prefer to Talk Directly?</h2>
+  <p>Call or WhatsApp us — we're happy to answer your questions.</p>
+  <a href="https://wa.me/917806866472" class="btn-white">💬 WhatsApp Us Now</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>SRK Constructions</h4>
+      <p>Licensed civil contractors serving Chennai and surrounding areas since 2005.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+917806866472">📞 +91 78068 66472</a>
+      <a href="mailto:info@srkconstructions.in">✉️ info@srkconstructions.in</a>
+      <p>📍 Anna Nagar, Chennai - 600040</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Residential Construction</a>
+      <a href="#services">Commercial Projects</a>
+      <a href="#services">Renovation</a>
+      <a href="#services">Plan Approvals</a>
+    </div>
+    <div class="footer-col">
+      <h4>Working Hours</h4>
+      <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
+      <p>Sunday: By appointment</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 SRK Constructions. All rights reserved. | GST: 33XXXXX1234X1Z5
+  </div>
+</footer>
+
+<a href="https://wa.me/917806866472" class="whatsapp-float">💬</a>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const name = form.querySelector('input[type="text"]').value;
+  const phone = form.querySelector('input[type="tel"]').value;
+  const type = form.querySelector('select').value;
+
+  const msg = `Hello SRK Constructions!%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AProject: ${encodeURIComponent(type)}%0A%0AI'd like a free quote.`;
+
+  window.open(`https://wa.me/917806866472?text=${msg}`, '_blank');
+  form.reset();
+  alert('Thank you! Opening WhatsApp so we can connect instantly.');
+}
+</script>
+
+</body>
+</html>
